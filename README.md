@@ -17,4 +17,4 @@ Quantum Computing is a form of computing designed to tackle problems that are si
 Grover's algorithm is a quantum algorithm that can search for an item within a group of elements in O(√ N) time. For reference, classical computers ususally take O(N) time, as they need to search the entire group to see the whole thing.
 
 ## What I'm trying to do:
-So the goal is to
+So the goal is to try and implement this algorithm to try and optimize database query searches.
