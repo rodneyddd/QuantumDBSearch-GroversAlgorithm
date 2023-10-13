@@ -25,7 +25,7 @@ So the goal is to try and implement this algorithm to try and optimize database 
 The first step is create a quantum oracle. 
 > First off doesn't that sound ridiculously cool?!!
 
-A quantum Oracle is an operation that marks or highlights the qubits representing the target item, making them distinguishable from the rest of the states.
+A Quantum Oracle is an operation that marks or highlights the qubits representing the target item, making them distinguishable from the rest of the states.
 The thing about quantum computing is that this form of computing is based off of probabilistic states, and therefore we're dealing with a bunch of states that have a probability of being active at the same time (superposition). But are specifically looking at which one has the highest probability of being active at any given time. 
 
 Within the oracle the input state corresponds to the target item, as in when the program recognizes the target item, the oracle applies a phase shift of -1. This flips the signs of the amplitude by -1. All other amplitudes are left unaffected.
