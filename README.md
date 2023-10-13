@@ -28,7 +28,11 @@ The first step is create a quantum oracle.
 A quantum Oracle is an operation that marks or highlights the qubits representing the target item, making them distinguishable from the rest of the states.
 The thing about quantum computing is that this form of computing is based off of probabilistic states, and therefore we're dealing with a bunch of states that have a probability of being active at the same time (superposition). But are specifically looking at which one has the highest probability of being active at any given time. 
 
-The oracle operation has to be reversible, and so in Q# we use specify that the "Unit is Adj" or that the function is adjointable.
-This means that we can reverse the function. 
+Within the oracle the input state corresponds to the target item, as in when the program recognizes the target item, the oracle applies a phase shift of -1. This flips the signs of the amplitude by -1. All other amplitudes are left unaffected.
 
-The adjointable function is a fundamental principle in quantum computing that surrounds the need for reversibility within quantum operations. The have a superposition 
+
+Then comes something called the Diffusion Operator, which makes it easier to pinpoint the specific target item. First it applies a Hadamard Transform which puts all the qubits in a state of superposition. This doesn’t undo the phase shift in the oracle; it just affects the probability amplitudes of all states. This includes the modified amplitudes resulting from the phase shift in the oracle. 
+
+Something called a constructive interference occurs when this transformation hits the marked items. It ends up increasing the probability of measuring those states. The amplitudes add up, leading to a higher probability for specific outcomes. All the other unmarked items have a destructive interference where if they aren’t flagged or marked their amplitudes cancel each other out, resulting in a lower probability for certain outcomes. 
+
+
