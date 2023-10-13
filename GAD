@@ -1,0 +1,34 @@
+namespace DatabaseSearch {
+
+    //Quantum Oracle
+    //Purpose is to mark the entry
+    operation MarkDatabaseEntry(query : String, entry : String) : Unit { 
+        if (entry == query) {
+           
+            X(Head(entry)); 
+        }
+    }
+
+    
+    operation AmplifyMarkedEntries(register : Qubit[], query : String) : Unit {
+        ApplyToEachA(H, register);
+    }
+
+    @EntryPoint()
+    operation SearchDatabase(query : String, database : String[]) : String[] {
+        
+        use register = Qubit[Length(database)];
+
+        ApplyToEachA(H, register);
+
+        for (entry in database) {
+            MarkDatabaseEntry(query, entry);
+        }
+
+        AmplifyMarkedEntries(register, query);
+
+        let results = MultiM(register);
+
+        return ResultArrayAsBoolArray(results) ? database | [];
+    }
+}
