@@ -33,6 +33,6 @@ Within the oracle the input state corresponds to the target item, as in when the
 
 Then comes something called the Diffusion Operator, which makes it easier to pinpoint the specific target item. First it applies a Hadamard Transform which puts all the qubits in a state of superposition. This doesn’t undo the phase shift in the oracle; it just affects the probability amplitudes of all states. This includes the modified amplitudes resulting from the phase shift in the oracle. 
 
-Something called a constructive interference occurs when this transformation hits the marked items. It ends up increasing the probability of measuring those states. The amplitudes add up, leading to a higher probability for specific outcomes. All the other unmarked items have a destructive interference where if they aren’t flagged or marked their amplitudes cancel each other out, resulting in a lower probability for certain outcomes. 
+Something called a constructive interference occurs when this transformation hits the marked items. It ends up increasing the probability of measuring those states. The amplitudes add up, leading to a higher probability for specific outcomes. All the other unmarked items have a destructive interference where if they aren’t flagged or marked their amplitudes cancel each other out, resulting in a lower probability for the inputs that don't match the target item. 
 
 
