@@ -29,6 +29,7 @@ A Quantum Oracle is an operation that marks or highlights the qubits representin
 The thing about quantum computing is that this form of computing is based off of probabilistic states, and therefore we're dealing with a bunch of states that have a probability of being active at the same time (superposition). But are specifically looking at which one has the highest probability of being active at any given time. 
 
 Within the oracle the input state corresponds to the target item, as in when the program recognizes the target item, the oracle applies a phase shift of -1. This flips the signs of the amplitude by -1. All other amplitudes are left unaffected.
+(This is what the X Gate is responsible for).
 
 
 Then comes something called the Diffusion Operator, which makes it easier to pinpoint the specific target item. First it applies a Hadamard Transform which puts all the qubits in a state of superposition. This doesn’t undo the phase shift in the oracle; it just affects the probability amplitudes of all states. This includes the modified amplitudes resulting from the phase shift in the oracle. 
