@@ -33,10 +33,11 @@ Within the oracle the input state corresponds to the target item, as in when the
 (This is what the X Gate is responsible for).
 
 
-Then comes something called the Diffusion Operator, which makes it easier to pinpoint the specific target item. First it applies a Hadamard Transform which puts all the qubits in a state of superposition. This doesn’t undo the phase shift in the oracle; it just affects the probability amplitudes of all states. This includes the modified amplitudes resulting from the phase shift in the oracle. 
+Then comes something called the Diffusion Operator, which makes it easier to pinpoint the specific target item. Throughout the array of qubits we apply the Z gate. The Z gate sets up the quantum state by creating a state where marked items have a phase difference from unmarked items, facilitating the interference and amplification of the marked items during the algorithm's execution.
 
-It's the 
+Then we apply the H gate. The H gate puts the qubits into a superposition state.
 
+Superposition enables interference effects between different paths in the quantum state. 
 Something called a constructive interference occurs when this transformation hits the marked items. It ends up increasing the probability of measuring those states. The amplitudes add up, leading to a higher probability for specific outcomes. All the other unmarked items have a destructive interference where if they aren’t flagged or marked their amplitudes cancel each other out, resulting in a lower probability for the inputs that don't match the target item. 
 
 In the Grover’s Search operation, we go through an array of qubits, we apply a H gate to them, which puts them in a state of superposition, and we iterate through them and apply the previous functions multiple times until we’re done iterating. Then we save the results of the array and return it. It’s in the testing file, that we use the resulting array to find the marked item.
