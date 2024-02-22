@@ -39,7 +39,6 @@ namespace Quantum.GroverSearch {
         }
     }
     
-
     // Grover's algorithm
     // The markItem parameter represents the item(s) we are searching for in the database.
     // The n : int parameter represents the number of qubits used in the quantum register.
@@ -47,20 +46,23 @@ namespace Quantum.GroverSearch {
         mutable result = new Result[n];
         //here we initialize an array named result of size n to store the measurement results of the qubits.
         using (qubits = Qubit[n]) {
-            H(qubits);
+            H(qubits); //applies hadabard gate to put all of them in state of superposition
             
             // Number of iterations for amplitude amplification
-            let numIterations = IntAsDouble(Sqrt(PowI(2, n)));
+            let numIterations = IntAsDouble(Sqrt(PowI(2, n))); 
             
+            //here it just continously loops through these functions 
             repeat {
                 Oracle(markItem, qubits);
                 DiffusionOperation(markItem, qubits);
                 set numIterations -= 1.0;
             } until (numIterations == 0.0);
             
+            //here it measures each qubit in the register and stores the measurement results in the result array.
             set result = ForEach(qubits, MeasureResult);
         }
         
         return result;
     }
+
 }

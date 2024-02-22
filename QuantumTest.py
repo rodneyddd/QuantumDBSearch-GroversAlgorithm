@@ -31,5 +31,31 @@ for entry in database:
 # Call your Q# algorithm
 results = GroverSearch.simulate(markItem=target, database=encoded_database)
 
-# Process the results
+# Here's where we process the results
 # You need to decode the results returned by the Q# algorithm and map them back to the original database representation
+
+# Define a function to decode the measurement outcomes returned by Grover's algorithm
+def decode_results(results):
+    decoded_results = []
+    for result in results:
+        decoded_result = {}
+        # Assuming 'id_qubit_' is used as the prefix for the qubit names
+        for key, value in result.items():
+            if key.startswith('id_qubit_'):
+                decoded_result['id'] = decoded_result.get('id', '') + str(value)
+        decoded_results.append(decoded_result)
+    return decoded_results
+
+# Decode the results returned by Grover's algorithm
+decoded_results = decode_results(results)
+
+# Find the matching entries in the original database based on the decoded results
+matching_entries = []
+for decoded_result in decoded_results:
+    for entry in database:
+        if entry['id'] == int(decoded_result['id'], 2):  # Convert binary string to integer
+            matching_entries.append(entry)
+
+# Print or further process the matching entries
+for entry in matching_entries:
+    print(entry)
